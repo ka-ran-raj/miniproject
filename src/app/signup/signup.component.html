@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Signup</h1>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text">
+    </div>
+
+    <div>
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" formControlName="phoneNumber" type="tel">
+    </div>
+
+    <div>
+      <label for="age">Age:</label>
+      <input id="age" formControlName="age" type="number">
+    </div>
+
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" formControlName="gender">
+        <option value="">Select</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password">
+    </div>
+
+    <div>
+      <label for="city">City:</label>
+      <input id="city" formControlName="city" type="text">
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid">Signup</button>
+  </form>
+</div>

@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Profile Details</h1>
+    <button (click)="navigateToAccount()">My Account</button>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" type="text">
+      </div>
+      <div>
+        <label for="gatepassType">Gatepass Type:</label>
+        <select id="gatepassType" formControlName="gatepassType">
+          <option value="circus">Circus</option>
+          <option value="waterfalls">Waterfalls</option>
+          <option value="both">Both</option>
+        </select>
+      </div>
+      <div>
+        <label for="numberOfAdults">Number of Adults:</label>
+        <input id="numberOfAdults" formControlName="numberOfAdults" type="number">
+      </div>
+      <div>
+        <label for="numberOfChildren">Number of Children:</label>
+        <input id="numberOfChildren" formControlName="numberOfChildren" type="number">
+      </div>
+      <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+    </form>
+    <div *ngIf="totalPrice > 0">
+      <h3>Total Price: ${{ totalPrice }}</h3>
+    </div>
+    <div>
+        <google-pay-button
+          environment="TEST"
+          buttonType="buy"
+          buttonColor="black"
+          [paymentRequest]="paymentRequest"
+          (loadpaymentdata)="onLoadPaymentData($event)">
+        </google-pay-button>
+      </div>
+  </div>
+  
